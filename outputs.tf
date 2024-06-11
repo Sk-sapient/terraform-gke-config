@@ -9,3 +9,4 @@ output "kubernetes_endpoint" {
 output "kubernetes_ca_certificate" {
   value = module.gke.kubernetes_ca_certificate
 }
+
