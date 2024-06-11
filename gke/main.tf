@@ -16,6 +16,13 @@ resource "google_container_cluster" "primary" {
   networking_mode = "VPC_NATIVE"
 
   # Other configurations...
+
+  depends_on = [
+    module.vpc,
+    module.firewall,
+    module.router,
+    # Add other modules as needed
+  ]
 }
 
 output "cluster_name" {
