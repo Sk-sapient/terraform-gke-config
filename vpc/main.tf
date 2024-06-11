@@ -1,3 +1,11 @@
+variable "project" {
+  description = "The GCP project ID."
+}
+
+variable "network" {
+  description = "The name of the VPC network."
+}
+
 resource "google_project_service" "compute" {
   service = "compute.googleapis.com"
 }
@@ -35,4 +43,12 @@ resource "google_compute_subnetwork" "private" {
     range_name    = "services"
     ip_cidr_range = "10.2.0.0/20"
   }
+}
+
+output "vpc_network_name" {
+  value = google_compute_network.vpc_network.name
+}
+
+output "private_subnetwork_name" {
+  value = google_compute_subnetwork.private.name
 }
