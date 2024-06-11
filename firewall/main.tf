@@ -1,6 +1,10 @@
+variable "vpc_network_id" {
+  description = "The ID of the VPC network."
+}
+
 resource "google_compute_firewall" "gke_firewall" {
   name    = "test-firewall"
-  network = var.network
+  network = var.vpc_network_id
 
   allow {
     protocol = "icmp"
