@@ -1,3 +1,39 @@
+variable "cluster_name" {
+  description = "GKE cluster name"
+}
+
+variable "region" {
+  description = "Region to deploy resources"
+}
+
+variable "zone" {
+  description = "Zone to deploy resources"
+}
+
+variable "machine_type" {
+  description = "Machine type for nodes"
+}
+
+variable "node_count" {
+  description = "Number of nodes in the node pool"
+}
+
+variable "preemptibility" {
+  description = "Whether to use preemptible VMs"
+}
+
+variable "project" {
+  description = "GCP project"
+}
+
+variable "network" {
+  description = "The name of the VPC network."
+}
+
+variable "subnetwork" {
+  description = "The name of the subnetwork."
+}
+
 resource "google_container_cluster" "primary" {
   name                   = var.cluster_name
   location               = var.zone
