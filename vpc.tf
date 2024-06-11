@@ -8,7 +8,7 @@ resource "google_project_service" "container" {
 
 resource "google_compute_network" "vpc_network" {
   project                         = var.project
-  name                            = var.network
+  name                            = var.vpc_network_id
   routing_mode                    = "REGIONAL"
   auto_create_subnetworks         = false
   mtu                             = 1460
@@ -21,10 +21,10 @@ resource "google_compute_network" "vpc_network" {
 }
 
 resource "google_compute_subnetwork" "private" {
-  name          = "private-subnetwork"
+  name          = var.private-subnetwork
   ip_cidr_range = "10.0.0.0/16"
   region        = var.region
-  network       = google_compute_network.vpc_network.self_link
+  network       = var.vpc_network_id
 
   secondary_ip_range {
     range_name    = "pods"
@@ -36,3 +36,5 @@ resource "google_compute_subnetwork" "private" {
     ip_cidr_range = "10.2.0.0/20"
   }
 }
+
+
