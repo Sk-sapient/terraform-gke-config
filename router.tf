@@ -1,11 +1,3 @@
-variable "network" {
-  description = "The name of the VPC network."
-}
-
-variable "subnetwork" {
-  description = "The name of the subnetwork."
-}
-
 resource "google_compute_router" "router" {
   name    = "router"
   region  = var.region
@@ -24,4 +16,3 @@ resource "google_compute_router_nat" "nat" {
     source_ip_ranges_to_nat = ["ALL_IP_RANGES"]
   }
 }
-
