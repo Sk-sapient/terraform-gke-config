@@ -24,12 +24,13 @@ module "vpc" {
 
 module "firewall" {
   source = "./firewall"
-  network = module.vpc.vpc_network
+  network = module.vpc.vpc_network.self_link
 }
 
 module "router" {
   source = "./router"
-  network = module.vpc.vpc_network
+  network = module.vpc.vpc_network.self_link
+  subnetwork = module.vpc.private_subnetwork.self_link
 }
 
 module "gke" {
