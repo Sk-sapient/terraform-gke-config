@@ -23,6 +23,10 @@ variable "vpc_network_id" {
   type        = string
 }
 
+variable "subnetwork" {
+  description = "subnetwork network name"
+  type        = string
+}
 variable "node_count" {
   description = "Number of nodes in the node pool"
   type        = number
