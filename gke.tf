@@ -3,8 +3,8 @@ resource "google_container_cluster" "primary" {
   location               = var.zone
   remove_default_node_pool = true
   initial_node_count     = 1
-  network                = var.network
-  subnetwork             = var.subnetwork
+  network                = var.vpc_network_id
+  subnetwork             = var.private_subnetwork
 
   private_cluster_config {
     enable_private_nodes    = true
