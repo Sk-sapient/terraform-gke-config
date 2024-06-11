@@ -18,7 +18,7 @@ variable "cluster_name" {
   type        = string
 }
 
-variable "network" {
+variable "vpc_network_id" {
   description = "VPC network name"
   type        = string
 }
