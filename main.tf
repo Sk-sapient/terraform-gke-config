@@ -17,20 +17,20 @@ terraform {
 }
 
 module "vpc" {
-  source = "./vpc"
+  source  = "./vpc"
   project = var.project
   network = var.network
 }
 
 module "firewall" {
-  source = "./firewall"
-  network = module.vpc.vpc_network.self_link
+  source         = "./firewall"
+  vpc_network_id = module.vpc.vpc_network_id
 }
 
 module "router" {
-  source = "./router"
-  network = module.vpc.vpc_network.self_link
-  subnetwork = module.vpc.private_subnetwork.self_link
+  source      = "./router"
+  network     = module.vpc.vpc_network_name
+  subnetwork  = module.vpc.private_subnetwork_name
 }
 
 module "gke" {
@@ -42,8 +42,8 @@ module "gke" {
   node_count    = var.node_count
   preemptibility = var.preemptibility
   project       = var.project
-  network       = module.vpc.vpc_network.self_link
-  subnetwork    = module.vpc.private_subnetwork.self_link
+  network       = module.vpc.vpc_network_name
+  subnetwork    = module.vpc.private_subnetwork_name
 }
 
 output "cluster_name" {
