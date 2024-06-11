@@ -37,3 +37,4 @@ variable "preemptibility" {
   description = "Whether to use preemptible VMs"
   type        = bool
 }
+
